@@ -1,6 +1,8 @@
 let sessionLength = 25;
 let breakLength = 5;
 let timerInterval;
+let currentTime = sessionLength * 60;
+let timerRunning = false;
 
 function adjustSessionLength(change) {
   sessionLength += change;
@@ -8,6 +10,10 @@ function adjustSessionLength(change) {
     sessionLength = 1;
   }
   document.getElementById('session-length').innerText = sessionLength;
+  if (!timerRunning) {
+    currentTime = sessionLength * 60;
+    updateTimerDisplay();
+  }
 }
 
 function adjustBreakLength(change) {
@@ -20,20 +26,28 @@ function adjustBreakLength(change) {
 
 function resetTimer() {
   clearInterval(timerInterval);
-  document.getElementById('timer').innerText = '25:00';
+  currentTime = sessionLength * 60;
+  updateTimerDisplay();
 }
 
 function startTimer() {
-  let time = sessionLength * 60;
-  let minutes, seconds;
-  timerInterval = setInterval(function() {
-    minutes = Math.floor(time / 60);
-    seconds = time % 60;
-    document.getElementById('timer').innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-    if (time <= 0) {
-      clearInterval(timerInterval);
-    } else {
-      time--;
-    }
-  }, 1000);
+  if (!timerRunning) {
+    timerInterval = setInterval(function() {
+      if (currentTime <= 0) {
+        clearInterval(timerInterval);
+        // Handle break time here
+        currentTime = breakLength * 60;
+      } else {
+        currentTime--;
+      }
+      updateTimerDisplay();
+    }, 1000);
+    timerRunning = true;
+  }
+}
+
+function updateTimerDisplay() {
+  let minutes = Math.floor(currentTime / 60);
+  let seconds = currentTime % 60;
+  document.getElementById('timer').innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 }

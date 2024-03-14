@@ -9,38 +9,38 @@
 <body>
   <div class="container">
     <!-- Row 1: Pomodoro Countdown Timer -->
-    <div class="row" style="height: 40%;">
+    <div class="row timer-row" style="height: 40%;">
       <div id="timer" class="timer">25:00</div>
     </div>
 
     <!-- Row 2: Session Length -->
-    <div class="row" style="height: 6%;">
-      <div class="label">Session Length</div>
+    <div class="row gray-row" style="height: 6%;">
+      <div class="text-centered">Session Length</div>
     </div>
 
     <!-- Row 3: Session Length Controls -->
     <div class="row" style="height: 10%;">
-      <button onclick="adjustSessionLength(-25)">-</button>
-      <div id="session-length" class="length">25</div>
-      <button onclick="adjustSessionLength(25)">+</button>
+      <div class="column green-column" onclick="adjustSessionLength(-25)">-</div>
+      <div class="column gray-column" id="session-length">25</div>
+      <div class="column green-column" onclick="adjustSessionLength(25)">+</div>
     </div>
 
     <!-- Row 4: Break Length -->
-    <div class="row" style="height: 6%;">
-      <div class="label">Break Length</div>
+    <div class="row gray-row" style="height: 6%;">
+      <div class="text-centered">Break Length</div>
     </div>
 
     <!-- Row 5: Break Length Controls -->
     <div class="row" style="height: 10%;">
-      <button onclick="adjustBreakLength(-5)">-</button>
-      <div id="break-length" class="length">5</div>
-      <button onclick="adjustBreakLength(5)">+</button>
+      <div class="column green-column" onclick="adjustBreakLength(-5)">-</div>
+      <div class="column gray-column" id="break-length">5</div>
+      <div class="column green-column" onclick="adjustBreakLength(5)">+</div>
     </div>
 
     <!-- Row 6: Reset and Start Buttons -->
     <div class="row" style="height: 28%;">
-      <button onclick="resetTimer()">Reset</button>
-      <button onclick="startTimer()">Start</button>
+      <button class="reset-button" onclick="resetTimer()">Reset</button>
+      <button class="start-button" onclick="startTimer()">Start</button>
     </div>
   </div>
 
