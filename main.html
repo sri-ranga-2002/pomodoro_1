@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Row 1: Pomodoro Countdown Timer -->
+    <div class="row" style="height: 40%;">
+      <div id="timer" class="timer">25:00</div>
+    </div>
+
+    <!-- Row 2: Session Length -->
+    <div class="row" style="height: 6%;">
+      <div class="label">Session Length</div>
+    </div>
+
+    <!-- Row 3: Session Length Controls -->
+    <div class="row" style="height: 10%;">
+      <button onclick="adjustSessionLength(-25)">-</button>
+      <div id="session-length" class="length">25</div>
+      <button onclick="adjustSessionLength(25)">+</button>
+    </div>
+
+    <!-- Row 4: Break Length -->
+    <div class="row" style="height: 6%;">
+      <div class="label">Break Length</div>
+    </div>
+
+    <!-- Row 5: Break Length Controls -->
+    <div class="row" style="height: 10%;">
+      <button onclick="adjustBreakLength(-5)">-</button>
+      <div id="break-length" class="length">5</div>
+      <button onclick="adjustBreakLength(5)">+</button>
+    </div>
+
+    <!-- Row 6: Reset and Start Buttons -->
+    <div class="row" style="height: 28%;">
+      <button onclick="resetTimer()">Reset</button>
+      <button onclick="startTimer()">Start</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
